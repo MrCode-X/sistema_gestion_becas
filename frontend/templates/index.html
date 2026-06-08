@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de Becas UMSA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+        .card-glass { background: rgba(255,255,255,0.95); border-radius: 20px; backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body class="p-4">
+    <div class="container mx-auto max-w-6xl">
+        <div class="card-glass shadow-2xl p-6 mb-6">
+            <h1 class="text-4xl font-bold text-center text-purple-800">🎓 Sistema de Gestión de Becas UMSA</h1>
+            <p class="text-center text-gray-600">Gestión integral de postulaciones · Comité de Becas 2026</p>
+        </div>
+
+        <!-- Login -->
+        <div id="loginSection" class="card-glass p-6 mb-6 shadow-xl">
+            <h2 class="text-2xl font-bold mb-4">🔐 Iniciar Sesión</h2>
+            <input type="text" id="username" placeholder="Usuario" class="form-control mb-2">
+            <input type="password" id="password" placeholder="Contraseña" class="form-control mb-2">
+            <button onclick="login()" class="btn btn-primary w-full">Ingresar</button>
+        </div>
+
+        <!-- Panel Principal (oculto hasta login) -->
+        <div id="panelSection" style="display:none;">
+            <!-- Dashboard -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                <div class="card-glass p-4 text-center"><h3>📊 Programas Activos</h3><p id="totalProgramas" class="text-3xl font-bold">0</p></div>
+                <div class="card-glass p-4 text-center"><h3>📝 Postulaciones</h3><p id="totalPostulaciones" class="text-3xl font-bold">0</p></div>
+                <div class="card-glass p-4 text-center"><h3>✅ Becas Aprobadas</h3><p id="totalAprobadas" class="text-3xl font-bold">0</p></div>
+                <div class="card-glass p-4 text-center"><h3>💰 Inversión Total</h3><p id="totalInversion" class="text-3xl font-bold">Bs 0</p></div>
+            </div>
+
+            <!-- CRUD Postulaciones -->
+            <div class="card-glass p-6 mb-6">
+                <h2 class="text-2xl font-bold mb-4">📌 Gestionar Postulaciones</h2>
+                <form id="postulacionForm" class="mb-4">
+                    <div class="row g-2">
+                        <div class="col-md-3"><input type="number" id="estudiante_id" placeholder="ID Estudiante" class="form-control" required></div>
+                        <div class="col-md-3"><input type="number" id="programa_id" placeholder="ID Programa" class="form-control" required></div>
+                        <div class="col-md-3"><select id="estado" class="form-control"><option value="pendiente">Pendiente</option><option value="aprobada">Aprobada</option><option value="rechazada">Rechazada</option></select></div>
+                        <div class="col-md-3"><input type="number" id="monto_asignado" placeholder="Monto Asignado" class="form-control"></div>
+                        <div class="col-md-12 mt-2"><button type="submit" class="btn btn-success w-full">➕ Crear Postulación</button></div>
+                    </div>
+                </form>
+                <div id="postulacionesList" class="grid gap-2"></div>
+            </div>
+
+            <!-- Consultas Personalizadas -->
+            <div class="card-glass p-6">
+                <h2 class="text-2xl font-bold mb-4">🔍 Consultas Avanzadas</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div><button onclick="consultarPorEstado()" class="btn btn-info w-full">📌 Ver Pendientes</button></div>
+                    <div><button onclick="resumenProgramas()" class="btn btn-info w-full">📊 Resumen por Programa</button></div>
+                    <div><input type="number" id="promedio_min" placeholder="Promedio mínimo" class="form-control"><button onclick="estudiantesDestacados()" class="btn btn-warning w-full mt-2">⭐ Estudiantes Destacados</button></div>
+                    <div><button onclick="rankingProgramas()" class="btn btn-secondary w-full">🏆 Ranking de Programas</button></div>
+                </div>
+                <div id="resultadosConsulta" class="mt-4 p-3 bg-light rounded"></div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
