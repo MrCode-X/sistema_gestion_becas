@@ -18,3 +18,6 @@ class Postulacion(models.Model):
     
     def __str__(self):
         return f"{self.estudiante.nombre_completo} - {self.programa.nombre} ({self.estado})"
+
+    class Meta:
+        db_table = 'postulaciones'

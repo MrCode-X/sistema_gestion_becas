@@ -59,6 +59,56 @@ async function eliminarPostulacion(id) {
     cargarDashboard();
 }
 
+// Crear Programa
+document.getElementById('programaForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = {
+        nombre: document.getElementById('prog_nombre').value,
+        descripcion: document.getElementById('prog_descripcion').value,
+        monto_maximo: parseFloat(document.getElementById('prog_monto').value),
+        plazas: parseInt(document.getElementById('prog_plazas').value),
+        activo: true
+    };
+    const res = await fetch('/api/programas/', {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    });
+    if (res.ok) {
+        alert('✅ Programa creado exitosamente');
+        document.getElementById('programaForm').reset();
+        cargarDashboard();
+    } else {
+        alert('❌ Error al crear programa');
+    }
+});
+
+// Crear Estudiante
+document.getElementById('estudianteForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = {
+        ci: document.getElementById('est_ci').value,
+        nombre_completo: document.getElementById('est_nombre').value,
+        email: document.getElementById('est_email').value,
+        carrera: document.getElementById('est_carrera').value,
+        semestre: parseInt(document.getElementById('est_semestre').value),
+        promedio: parseFloat(document.getElementById('est_promedio').value)
+    };
+    const res = await fetch('/api/estudiantes/', {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    });
+    if (res.ok) {
+        alert('✅ Estudiante creado exitosamente');
+        document.getElementById('estudianteForm').reset();
+        cargarDashboard();
+    } else {
+        alert('❌ Error al crear estudiante');
+    }
+});
+
+// Crear Postulación
 document.getElementById('postulacionForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = {
@@ -67,13 +117,19 @@ document.getElementById('postulacionForm').addEventListener('submit', async (e) 
         estado: document.getElementById('estado').value,
         monto_asignado: parseFloat(document.getElementById('monto_asignado').value) || null
     };
-    await fetch('/api/postulaciones/', {
+    const res = await fetch('/api/postulaciones/', {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     });
-    cargarPostulaciones();
-    cargarDashboard();
+    if (res.ok) {
+        alert('✅ Postulación creada exitosamente');
+        document.getElementById('postulacionForm').reset();
+        cargarPostulaciones();
+        cargarDashboard();
+    } else {
+        alert('❌ Error al crear postulación');
+    }
 });
 
 async function cargarDashboard() {

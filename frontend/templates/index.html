@@ -36,6 +36,36 @@
                 <div class="card-glass p-4 text-center"><h3>💰 Inversión Total</h3><p id="totalInversion" class="text-3xl font-bold">Bs 0</p></div>
             </div>
 
+            <!-- CRUD Programas -->
+            <div class="card-glass p-6 mb-6">
+                <h2 class="text-2xl font-bold mb-4">📚 Gestionar Programas</h2>
+                <form id="programaForm" class="mb-4">
+                    <div class="row g-2">
+                        <div class="col-md-3"><input type="text" id="prog_nombre" placeholder="Nombre Programa" class="form-control" required></div>
+                        <div class="col-md-3"><input type="text" id="prog_descripcion" placeholder="Descripción" class="form-control" required></div>
+                        <div class="col-md-2"><input type="number" id="prog_monto" placeholder="Monto Máximo" class="form-control" required></div>
+                        <div class="col-md-2"><input type="number" id="prog_plazas" placeholder="Plazas" class="form-control" required></div>
+                        <div class="col-md-2"><button type="submit" class="btn btn-success w-full">➕ Crear Programa</button></div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- CRUD Estudiantes -->
+            <div class="card-glass p-6 mb-6">
+                <h2 class="text-2xl font-bold mb-4">👨‍🎓 Gestionar Estudiantes</h2>
+                <form id="estudianteForm" class="mb-4">
+                    <div class="row g-2">
+                        <div class="col-md-2"><input type="text" id="est_ci" placeholder="Cédula" class="form-control" required></div>
+                        <div class="col-md-2"><input type="text" id="est_nombre" placeholder="Nombre Completo" class="form-control" required></div>
+                        <div class="col-md-2"><input type="email" id="est_email" placeholder="Email" class="form-control" required></div>
+                        <div class="col-md-2"><input type="text" id="est_carrera" placeholder="Carrera" class="form-control" required></div>
+                        <div class="col-md-1"><input type="number" id="est_semestre" placeholder="Sem" class="form-control" required></div>
+                        <div class="col-md-1"><input type="number" step="0.01" id="est_promedio" placeholder="Prom" class="form-control" required></div>
+                        <div class="col-md-2"><button type="submit" class="btn btn-success w-full">➕ Crear Estudiante</button></div>
+                    </div>
+                </form>
+            </div>
+
             <!-- CRUD Postulaciones -->
             <div class="card-glass p-6 mb-6">
                 <h2 class="text-2xl font-bold mb-4">📌 Gestionar Postulaciones</h2>
