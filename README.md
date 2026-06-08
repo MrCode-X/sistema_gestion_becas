@@ -1,3 +1,33 @@
+# sistema_gestion_becas
+
+Proyecto Django para gestionar becas. Contiene backend en `backend/` y archivos estáticos en `frontend/`.
+
+Requisitos
+- Python 3.10+ (usar el virtualenv provisto opcionalmente)
+
+Instalación rápida (Windows / PowerShell):
+
+```powershell
+# activar virtualenv si existe
+& env\Scripts\Activate.ps1
+
+# instalar dependencias
+pip install -r backend/requirements.txt
+
+# aplicar migraciones
+cd backend
+python manage.py migrate
+
+# crear superusuario (opcional)
+python manage.py createsuperuser
+
+# ejecutar servidor
+python manage.py runserver
+```
+
+Notas
+- El archivo de base de datos `backend/db.sqlite3` está en el `.gitignore` y fue eliminado del repo.
+- Para desarrollo local, mantén tu entorno virtual activado.
 # Sistema de Gestión de Becas — Instrucciones rápidas
 
 Requisitos:
