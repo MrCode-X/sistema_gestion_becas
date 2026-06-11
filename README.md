@@ -60,7 +60,7 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-5. Levantar servidor de desarrollo:
+5. Ejecutar servidor de desarrollo:
 
 ```powershell
 python manage.py runserver 8000
